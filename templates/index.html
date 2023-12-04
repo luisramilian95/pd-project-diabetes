@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Modelo de Diabetes</title>
+		<link rel="stylesheet" href="/static/style.css" />
+	</head>
+	<body>
+		<div class="diabetes-form">
+			<section>
+				<form action="{{ url_for('upload_data') }}" method="POST">
+					<label
+						><span>Género</span>
+						<select name="gender" class="selectpicker form-control">
+							<option value="0">Femenino</option>
+							<option value="1">Masculino</option>
+						</select>
+					</label>
+					<label>
+						<span>Edad</span>
+						<input required name="age" type="number" />
+					</label>
+					<label>
+						<input type="checkbox" name="hypertension" value="1" />
+						<span>Hipertensión</span>
+					</label>
+					<label>
+						<input name="heart_disease" type="checkbox" value="1" />
+						<span>Cardiopatía</span>
+					</label>
+					<label>
+						<span>Historial de fumador</span>
+						<select
+							name="smoking_history"
+							class="selectpicker form-control"
+						>
+							<option value="0">No Info</option>
+							<option value="1">Actualmente</option>
+							<option value="2">Siempre</option>
+							<option value="3">Formal</option>
+							<option value="4">Nunca</option>
+							<option value="5">No Actualmente</option>
+						</select>
+					</label>
+					<label
+						><span>bmi</span>
+						<input required name="bmi" type="text" />
+					</label>
+					<label
+						><span>Nivel HbA1c</span>
+						<input required name="HbA1c_level" type="text" />
+					</label>
+					<label
+						><span>Nivel de Glucosa en sangre</span>
+						<input
+							required
+							name="blood_glucose_level"
+							type="text"
+						/>
+					</label>
+
+					<input
+						class="g-button g-button-submit"
+						type="submit"
+						value="Evaluar"
+					/>
+				</form>
+			</section>
+
+			<section>
+				{% if prediction %}
+				<h1>Resultados</h1>
+				<h2>{{prediction}}</h2>
+				{% endif %}
+			</section>
+		</div>
+	</body>
+</html>
